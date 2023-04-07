@@ -1,0 +1,15 @@
+{
+  "name": "discord-template-v2",
+  "version": "2.0.0",
+  "description": "a new discord template to include slash commands",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ramona Prower",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.8.0"
+  }
+}
