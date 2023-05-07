@@ -89,7 +89,7 @@ class Cat {
             // few overrides to the strings to make it more fun
             // if meow is asleep or hungry, then those strings override, in that order
             if (this.guild.asleep && this.user.happiness <= 8) {
-                foundString = this.strings.sleep[Math.floor(Math.random() * this.strings.sleep.length)];
+                foundString = this.strings.asleep[Math.floor(Math.random() * this.strings.asleep.length)];
                 return foundString;
             }
             else if (this.hunger <= 4) {
