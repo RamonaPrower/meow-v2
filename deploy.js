@@ -6,7 +6,9 @@ const commands = [];
 const commandList = require('./commands/command');
 const commandsComms = commandList.commands;
 for (const file of commandsComms) {
+	if (file.settings.blockSlash !== true) {
 	commands.push(file.data.toJSON());
+	}
 }
 const commandAdmin = commandList.admin;
 for (const file of commandAdmin) {

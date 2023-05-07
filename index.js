@@ -24,7 +24,9 @@ client.slashCommands = new Collection();
 const commandsComms = commandList.commands;
 for (const file of commandsComms) {
 	client.messageCommands.set(file.settings.tag, file);
-    client.slashCommands.set(file.data.name, file);
+	if (file.settings.blockSlash !== true) {
+		client.slashCommands.set(file.data.name, file);
+	}
 }
 
 client.messageAdmin = new Collection();

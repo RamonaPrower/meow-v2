@@ -15,7 +15,7 @@ class Cat {
         this.mood = guildSearch.mood;
         this.guild = guildSearch;
         this.hunger = guildSearch.hunger;
-		this.user = userSearch;
+        this.user = userSearch;
         this.skin = skin;
         this.strings = stringBuilder.buildStrings(skin);
 
@@ -53,7 +53,7 @@ class Cat {
         // little bit of randomness to make it more fun
         const hundredSidedDice = Math.floor(Math.random() * 100) + 1;
         // calculate "proper" mood
-        const overallMood = this.mood + (Math.round(this.user.happiness / 2));
+        let overallMood = this.mood + (Math.round(this.user.happiness / 2));
         let foundString;
         let foundAction;
         // case break to determine what to do if moodBased is true
@@ -65,6 +65,7 @@ class Cat {
                 case 'meow':
                     foundAction = this.strings.meow;
                     break;
+                case 'hello':
                 case 'love':
                     foundAction = this.strings.love;
                     break;
@@ -84,6 +85,51 @@ class Cat {
             }
             else {
                 foundString = foundAction.happy;
+            }
+            // few overrides to the strings to make it more fun
+            // if meow is asleep or hungry, then those strings override, in that order
+            if (this.guild.asleep && this.user.happiness <= 8) {
+                foundString = this.strings.sleep[Math.floor(Math.random() * this.strings.sleep.length)];
+                return foundString;
+            }
+            else if (this.hunger <= 4) {
+                foundString = this.strings.hunger.yes[Math.floor(Math.random() * this.strings.hunger.yes.length)];
+                return foundString;
+            }
+            // love has special rules, it will always generate a positive interaction for the user, but it will also have a chance to make the cat happy
+            if (action === 'love') {
+                await this.user.positive();
+                // 20% chance to make the cat happy as well, if it's sad or neutral
+                if (overallMood <= 6 && hundredSidedDice <= 20) {
+                    overallMood = await this.guild.happyMood();
+                }
+                if (overallMood <= 3) {
+                    foundString = foundAction.sad;
+                }
+                else if (overallMood <= 6) {
+                    foundString = foundAction.neutral;
+                }
+                else {
+                    foundString = foundAction.happy;
+                }
+                return foundString[Math.floor(Math.random() * foundString.length)];
+            }
+            // hello is a simple greeting, but it will also have a chance to make the cat happy
+            if (action === 'hello') {
+                // 10% chance to make the cat happy as well, if it's sad or neutral
+                if (overallMood <= 6 && hundredSidedDice <= 10) {
+                    overallMood = await this.guild.happyMood();
+                }
+                if (overallMood <= 3) {
+                    foundString = foundAction.sad;
+                }
+                else if (overallMood <= 6) {
+                    foundString = foundAction.neutral;
+                }
+                else {
+                    foundString = foundAction.happy;
+                }
+                return foundString[Math.floor(Math.random() * foundString.length)];
             }
 
         }
@@ -106,6 +152,20 @@ class Cat {
         }
         return foundString;
 
+    }
+    async feed() {
+        // if hunger is below 4, then meow is hungy
+        const hungy = this.hunger <= 4;
+
+        if (hungy) {
+            await this.guild.feed();
+            await this.guild.wakeUp();
+            await this.user.positive();
+            return this.strings.fed[Math.floor(Math.random() * this.strings.fed.length)];
+        }
+        else {
+            return this.strings.hunger.no[Math.floor(Math.random() * this.strings.hunger.no.length)];
+        }
     }
 }
 

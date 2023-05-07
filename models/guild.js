@@ -104,6 +104,13 @@ guildSchema.methods.wakeUp = async function() {
     }
     await this.save();
 };
+guildSchema.methods.happyMood = async function() {
+    // force the mood to be happy, random between 7 and 10
+    const moodDice = Math.floor(Math.random() * 4) + 7;
+    this.mood = moodDice;
+    await this.save();
+    return moodDice;
+};
 
 const Guild = mongoose.model('Guild', guildSchema);
 exports.Guild = Guild;
