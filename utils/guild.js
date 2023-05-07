@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { Guild } = require('../models/guild');
-const strings = require('../strings/cat.json');
+const strings = require('../strings/strings.json');
 
 /**
  * The Settings Handler of each Guild
@@ -62,14 +62,20 @@ class GuildSettings {
     /**
      * Toggles the shouting command on a server
      * @param {Snowflake} guildId The guild ID
+     * @returns {Object} The settings of the guild
      */
-    async toggleShouting(guildId) {
+    async toggleShouting(guildId, force) {
         const search = await Guild.checkGuild(guildId);
-        if (search.enableShouting === true) {
-            search.enableShouting = false;
+        if (!force) {
+            if (search.enableShouting === true) {
+                search.enableShouting = false;
+            }
+            else {
+                search.enableShouting = true;
+            }
         }
         else {
-            search.enableShouting = true;
+            search.enableShouting = force;
         }
         await search.save();
         this.guilds.set(guildId, {

@@ -8,6 +8,11 @@ const commandsComms = commandList.commands;
 for (const file of commandsComms) {
 	commands.push(file.data.toJSON());
 }
+const commandAdmin = commandList.admin;
+for (const file of commandAdmin) {
+	commands.push(file.data.toJSON());
+}
+
 
 // Construct and prepare an instance of the REST module
 const rest = new REST({ version: '10' }).setToken(config.discord);

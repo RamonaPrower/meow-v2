@@ -2,13 +2,17 @@
 // so if the "New" skin is missing a string, it will use the default one
 // this is to make it easier to add new skins
 
-const strings = require('../strings/cat.json');
+const strings = require('../strings/strings.json');
 
 // use default skin as the base
 const defaultSkin = strings.default;
 
 function buildStrings(skin = 'default') {
     const builtStrings = {};
+    // first check if the skin exists, as it can be changed by the user
+    if (!strings[skin]) {
+        skin = 'default';
+    }
     // get the requested skin from the strings
     const skinStrings = strings[skin];
     // loop through the default skin
