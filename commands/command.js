@@ -1,3 +1,3 @@
-const ping = require('./ping.js');
+const speak = require('./commands/speak.js');
 
-module.exports.commands = [ping];
+module.exports.commands = [speak];

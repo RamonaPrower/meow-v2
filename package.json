@@ -1,7 +1,7 @@
 {
-  "name": "discord-template-v2",
+  "name": "meow-v2",
   "version": "2.0.0",
-  "description": "a new discord template to include slash commands",
+  "description": "we can rebuild him. we have the technology. we have the capability to make the world's first bionic cat. meow will be that cat. better than he was before. better...stronger...faster.",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -10,6 +10,8 @@
   "author": "Ramona Prower",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.8.0"
+    "discord.js": "^14.11.0",
+    "moment": "^2.29.4",
+    "mongoose": "^7.1.0"
   }
 }
