@@ -139,6 +139,12 @@ class Cat {
                 case 'bazinga':
                     foundAction = this.strings.bazinga;
                     break;
+                case 'hug':
+                    foundAction = this.strings.hug;
+                    break;
+                case 'hunger':
+                    foundAction = this.strings.hunger;
+                    break;
                 case 'speak':
                     foundAction = this.strings.speak;
                     break;
@@ -146,6 +152,15 @@ class Cat {
                     foundAction = this.strings.meow;
                     console.log('defaulted, action was ' + action);
                     break;
+            }
+            if (action === 'hunger') {
+                if (this.hunger <= 4) {
+                    foundString = foundAction.yes[Math.floor(Math.random() * foundAction.yes.length)];
+                }
+                else {
+                    foundString = foundAction.no[Math.floor(Math.random() * foundAction.no.length)];
+                }
+                return foundString;
             }
             // set the foundString to a random one from the array
             foundString = foundAction[Math.floor(Math.random() * foundAction.length)];
