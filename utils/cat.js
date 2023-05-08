@@ -62,6 +62,7 @@ class Cat {
                 case 'pet':
                     foundAction = this.strings.pet;
                     break;
+                case 'mood':
                 case 'meow':
                     foundAction = this.strings.meow;
                     break;
@@ -130,6 +131,10 @@ class Cat {
                     foundString = foundAction.happy;
                 }
                 return foundString[Math.floor(Math.random() * foundString.length)];
+            }
+            // if the cat is happy, then petting it will make it like the user more
+            if (action === 'pet' && overallMood >= 6) {
+                await this.user.positive();
             }
             return foundString[Math.floor(Math.random() * foundString.length)];
 
