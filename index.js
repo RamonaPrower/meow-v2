@@ -82,7 +82,6 @@ client.on(Events.MessageCreate, async message => {
 
 // this is for slash commands
 client.on(Events.InteractionCreate, async interaction => {
-    console.log('picked up an interaction');
     if (!interaction.isChatInputCommand()) return;
 	const thisGuildSettings = await guildSettings.getSettings(interaction.guildId);
 	const guildUserCat = await Cat.create(interaction.guildId, interaction.user.id);
