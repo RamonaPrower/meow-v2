@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-		.setName('vibe check')
+		.setName('vibecheck')
 		.setDescription('checking meow\'s vibes'),
 	async execute(interaction, guildUserCat) {
         const reply = await guildUserCat.getReaction('vibecheck');
