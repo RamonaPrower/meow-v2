@@ -151,8 +151,17 @@ class Cat {
                 case 'hunger':
                     foundAction = this.strings.hunger;
                     break;
+                case 'pspsps':
+                    foundAction = this.strings.pspsps;
+                    break;
                 case 'speak':
                     foundAction = this.strings.speak;
+                    break;
+                case 'sus':
+                    foundAction = this.strings.sus;
+                    break;
+                case 'vibecheck':
+                    foundAction = this.strings.vibe;
                     break;
                 default:
                     foundAction = this.strings.meow;
@@ -186,6 +195,12 @@ class Cat {
         }
         else {
             return this.strings.hunger.no[Math.floor(Math.random() * this.strings.hunger.no.length)];
+        }
+    }
+    async wake() {
+        // if the cat is asleep, then wake it up
+        if (this.guild.asleep) {
+            await this.guild.wakeUp();
         }
     }
 }

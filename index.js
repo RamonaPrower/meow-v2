@@ -57,6 +57,7 @@ client.on(Events.MessageCreate, async message => {
 	if (message.guild.available === false) return;
 	// is meow mentioned
 	const mentioned = message.mentions.has(client.user);
+	if (mentioned === false && !config.dev) return;
 	// get the settings for the guild
 	const thisGuildSettings = await guildSettings.getSettings(message.guild.id);
 	// make a guildUserCat (just for testing, this will be ordinarily called from the command to save db calls when not needed)
