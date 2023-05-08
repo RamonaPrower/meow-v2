@@ -145,6 +145,12 @@ class Cat {
                 case 'bazinga':
                     foundAction = this.strings.bazinga;
                     break;
+                case 'blobcat':
+                    foundAction = this.strings.blobcat;
+                    break;
+                case 'bork':
+                    foundAction = this.strings.bork;
+                    break;
                 case 'hug':
                     foundAction = this.strings.hug;
                     break;
