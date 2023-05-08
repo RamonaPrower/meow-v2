@@ -19,3 +19,8 @@ module.exports.commands = [bazinga, feed, hello, hug, hunger, love, meow, mood, 
 const toggle = require('./admin/toggle.js');
 
 module.exports.admin = [toggle];
+
+// triggers
+const susTrigger = require('./triggers/sus.js');
+
+module.exports.triggers = [susTrigger];

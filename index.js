@@ -1,10 +1,12 @@
 // setting up the discord bot
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const config = require('./config.json');
-const client = new Client({ intents: [GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
-] });
+const client = new Client({
+	intents: [GatewayIntentBits.Guilds,
+	GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.MessageContent,
+	],
+});
 const commandList = require('./commands/command');
 const { GuildSettings } = require('./utils/guild');
 const { Cat } = require('./utils/cat');
@@ -38,9 +40,16 @@ for (const file of commandsAdmin) {
 	client.slashAdmin.set(file.data.name, file);
 }
 
+client.messageTriggers = new Collection();
+
+const commandsTriggers = commandList.triggers;
+for (const file of commandsTriggers) {
+	client.messageTriggers.set(file.settings.tag, file);
+}
+
 
 client.once(Events.ClientReady, () => {
-    console.log('Connected to Discord');
+	console.log('Connected to Discord');
 	// connect to mongodb
 	const mongoose = require('mongoose');
 	mongoose.connect(config.db, {
@@ -57,32 +66,52 @@ client.on(Events.MessageCreate, async message => {
 	if (message.guild.available === false) return;
 	// is meow mentioned
 	const mentioned = message.mentions.has(client.user);
-	if (mentioned === false && !config.dev) return;
 	// get the settings for the guild
 	const thisGuildSettings = await guildSettings.getSettings(message.guild.id);
 	// make a guildUserCat (just for testing, this will be ordinarily called from the command to save db calls when not needed)
-	const guildUserCat = await Cat.create(message.guild.id, message.author.id);
-    // admin
-	if (message.author.id === message.guild.ownerId || message.member.permissions.has('MANAGE_CHANNELS')) {
+	// admin
+	if (mentioned === true && (message.author.id === message.guild.ownerId || message.member.permissions.has('MANAGE_CHANNELS'))) {
 		// message admin commands
 		for (const [key, value] of client.messageAdmin) {
 			if (value.settings.regexp.test(message.content)) {
+				console.log('admin command called');
 				value.execute(message, guildSettings);
+				return;
 			}
 		}
 	}
 	// commands
-    for (const [key, value] of client.messageCommands) {
-        if (value.settings.regexp.test(message.content)) {
-            value.execute(message, guildUserCat);
-        }
-    }
+	if (mentioned === true) {
+		for (const [key, value] of client.messageCommands) {
+			if (value.settings.regexp.test(message.content)) {
+				// saves on cat calls! (https://www.youtube.com/watch?v=pSg_6T8HrRg)
+				console.log('command called');
+				const guildUserCat = await Cat.create(message.guild.id, message.author.id);
+				value.execute(message, guildUserCat);
+				return;
+			}
+		}
+	}
+	// triggers
+	const dice = Math.floor(Math.random() * 100) + 1;
+	for (const [key, value] of client.messageTriggers) {
+		// if dice is less than or equal to the chance of the trigger, then run it
+		if (dice <= value.settings.chance || config.dev === true) {
+			if (value.settings.regexp.test(message.content)) {
+				console.log(`Triggered ${value.info.name} with ${dice}`);
+				const guildUserCat = await Cat.create(message.guild.id, message.author.id);
+				value.execute(message, guildUserCat);
+				return;
+
+			}
+		}
+	}
 
 });
 
 // this is for slash commands
 client.on(Events.InteractionCreate, async interaction => {
-    if (!interaction.isChatInputCommand()) return;
+	if (!interaction.isChatInputCommand()) return;
 	const thisGuildSettings = await guildSettings.getSettings(interaction.guildId);
 	const guildUserCat = await Cat.create(interaction.guildId, interaction.user.id);
 	// check for admin commands
