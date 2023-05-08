@@ -131,6 +131,7 @@ class Cat {
                 }
                 return foundString[Math.floor(Math.random() * foundString.length)];
             }
+            return foundString[Math.floor(Math.random() * foundString.length)];
 
         }
         // if moodbased is false, then we're doing a specific action

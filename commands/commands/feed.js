@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('feed')
-        .setDescription('Feed the bot'),
+        .setDescription('Feed meow'),
     async execute(interaction, cat) {
         const reply = await cat.feed();
         await interaction.reply(reply);
