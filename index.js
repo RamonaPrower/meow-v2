@@ -109,7 +109,7 @@ client.on(Events.MessageCreate, async message => {
 
 });
 
-// this is for slash commands
+// this is for admin slash commands
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 	const thisGuildSettings = await guildSettings.getSettings(interaction.guildId);
@@ -133,7 +133,7 @@ client.on(Events.InteractionCreate, async interaction => {
 			return;
 		}
 	}
-	// now normal commands
+	// now normal slash commands
 	const command = interaction.client.slashCommands.get(interaction.commandName);
 	if (command) {
 		try {

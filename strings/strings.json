@@ -1,173 +1,173 @@
 {
-    "default": {
-        "pet": {
-            "happy": [
-                "<:pethappy:575816294054756382>"
-            ],
-            "neutral": [
-                "<:meowhmph:575816294390038539>",
-                "<:petsad:575816294251757579>"
-            ],
-            "sad": [
-                "<:cathiss:575816295111720983>"
-            ]
-        },
-        "meow": {
-            "happy": [
-                "<:meowuwu:575816294280986625>",
-                "<:meowsquee:575816294042042375>",
-                "<:meowsmile:575816294507741184>",
-                "<:meowhello:575816294646022145>",
-                "<:cathappy:575567233254948865>",
-                "<:meowbigsmile:575818640616587278>",
-                "<:meowamused:575818640083910677>",
-                "<:meowmelt:575818640000024597>"
-            ],
-            "neutral": [
-                "<:meowhmph:575816294390038539>",
-                "<:meowflushed:575816294536970262>"
-            ],
-            "sad": [
-                "<:meowsad:575818640285237248>",
-                "<:meownotamused:575818640054550528>",
-                "<:meowpout:575816294809731073>"
-            ]
-        },
-        "hunger": {
-            "yes": [
-                "<:meowhungry:578260722623053845>",
-                "<:meowcryhungry:728030667199217717>"
-            ],
-            "no": [
-                "<:meowhmph:575816294390038539>"
-            ]
-        },
-        "love": {
-            "happy": [
-                "<:catlove:575816294113476608>"
-            ],
-            "neutral": [
-                "<:cathappy:575567233254948865>"
-            ],
-            "sad": [
-                "<:meowflirty:1073394679539830834>"
-            ]
-        },
-        "die": [
-            "<:meowknife:584213063519961128>"
-        ],
-        "asleep": [
-            "<:meowsleeping:580311354188103682>",
-            "<:meowtired:580311354460864512>"
-        ],
-        "fed": [
-            "<:meownomcookie:578260722232983574>",
-            "<:meowsip:578260722652413976>"
-        ],
-        "hug": [
-            "<:meowreach:578260721968742461>",
-            "<a:ameowreachrev:585571756144590874>",
-            "<a:ameowbounce:585563929833635878>"
-        ],
-        "hugdeny": [
-            "<:meowreachrevsad:584221422419968030>"
-        ],
-        "info": [
-            "```PLEAS AWARE OF CAT",
-            "@me feed",
-            "@me hunger",
-            "@me meow",
-            "@me mood",
-            "@me pet",
-            "pleas tel me u lov me lots",
-            "if you SCARE ME, pleas tel me its ok```"
-        ],
-        "admininfo": [
-            "I can also do special guild commands if you're an admin, such as",
-            "turning on and off the simulation (@me toggle sim), turning on and off Meow reacting to shouting in normal conversations (@me toggle shouting)",
-            "and turning off twitter image auto-expansion (@me toggle twitter)",
-            "Twitter Image auto-expansion is a lot better when i have \"Manage Webhook\" permissions!"
-        ],
-        "shout": [
-            "<:meowyikes:580076064152485912>",
-            "<:meowterrified:580076064051822592>"
-        ],
-        "catsounds": [
-            "meow",
-            "meoooow",
-            "mrow!",
-            "meow!",
-            "meoooooow!",
-            "miaou!",
-            "mrrrr",
-            "miau!",
-            "nyan~",
-            "mlem <:blobcatmlem:405521865268789251>",
-            "purrr~ <:blobcathappy:406260483960733696>"
-        ],
-        "calmphrases": [
-            "it'?s ok",
-            "don't worry",
-            "pet pat",
-            "poor cat",
-            "sorry",
-            "i'?m sorry"
-        ],
-        "calmemojis": [
-            "<:pethappy:575816294054756382>",
-            "<:petsad:575816294251757579>"
-        ],
-        "badfood": [
-            "cat piss"
-        ],
-        "badfoodstring": [
-            "<:meowsipglare:580135721160146975>"
-        ],
-        "welcome": [
-            "^hello",
-            "^hi",
-            "^henlo",
-            "^heya",
-            "^hoi"
-        ],
-        "thankyou": [
-            "thank",
-            "flower"
-        ],
-        "moms": [
-            "```MY MOMS R",
-            "Colgate#3522 - Main Codebase",
-            "warms#8080 - Initial Implementation",
-            "Else#3573 - Helping with Initial Implementation",
-            "Cat#5365 - Helping with Initial Implementation```"
-        ],
-        "momsfollowup": [
-            "<:meowuwu:575816294280986625>"
-        ],
-        "vibe": [
-            "<:meowknife:584213063519961128>",
-            "<:meowyikes:580076064152485912>",
-            "<:meowterrified:580076064051822592>",
-            "<:meowhammer:637324500232437780>"
-        ],
-        "pspsps": [
-            "<a:ameowpeek:821423317168816159>",
-            "<:meoweyes:821419657386131507>",
-            "<a:ameowlurk:821423040231505980>"
-        ],
-        "sus": [
-            "<:meowsus:821429204125745252>"
-        ],
-        "bazinga": [
-            "<:meownervous:584165009198940198>"
-        ],
-        "speak": [
-            "<:meowenjoy:580135721159884813>"
-        ]
+  "blahaj": {
+    "speak": [
+      "<:hajmlem:1104788715928297533>"
+    ]
+  },
+  "default": {
+    "admininfo": [
+      "I can also do special guild commands if you're an admin, such as",
+      "turning on and off the simulation (@me toggle sim), turning on and off Meow reacting to shouting in normal conversations (@me toggle shouting)",
+      "and turning off twitter image auto-expansion (@me toggle twitter)",
+      "Twitter Image auto-expansion is a lot better when i have \"Manage Webhook\" permissions!"
+    ],
+    "asleep": [
+      "<:meowsleeping:580311354188103682>",
+      "<:meowtired:580311354460864512>"
+    ],
+    "badfood": [
+      "cat piss"
+    ],
+    "badfoodstring": [
+      "<:meowsipglare:580135721160146975>"
+    ],
+    "bazinga": [
+      "<:meownervous:584165009198940198>"
+    ],
+    "calmemojis": [
+      "<:pethappy:575816294054756382>",
+      "<:petsad:575816294251757579>"
+    ],
+    "calmphrases": [
+      "it'?s ok",
+      "don't worry",
+      "pet pat",
+      "poor cat",
+      "sorry",
+      "i'?m sorry"
+    ],
+    "catsounds": [
+      "meow",
+      "meoooow",
+      "mrow!",
+      "meow!",
+      "meoooooow!",
+      "miaou!",
+      "mrrrr",
+      "miau!",
+      "nyan~",
+      "mlem <:blobcatmlem:405521865268789251>",
+      "purrr~ <:blobcathappy:406260483960733696>"
+    ],
+    "die": [
+      "<:meowknife:584213063519961128>"
+    ],
+    "fed": [
+      "<:meownomcookie:578260722232983574>",
+      "<:meowsip:578260722652413976>"
+    ],
+    "hug": [
+      "<:meowreach:578260721968742461>",
+      "<a:ameowreachrev:585571756144590874>",
+      "<a:ameowbounce:585563929833635878>"
+    ],
+    "hugdeny": [
+      "<:meowreachrevsad:584221422419968030>"
+    ],
+    "hunger": {
+      "yes": [
+        "<:meowhungry:578260722623053845>",
+        "<:meowcryhungry:728030667199217717>"
+      ],
+      "no": [
+        "<:meowhmph:575816294390038539>"
+      ]
     },
-    "blahaj": {
-        "speak": [
-            "<:hajmlem:1104788715928297533>"
-        ]
-    }
+    "info": [
+      "```PLEAS AWARE OF CAT",
+      "@me feed",
+      "@me hunger",
+      "@me meow",
+      "@me mood",
+      "@me pet",
+      "pleas tel me u lov me lots",
+      "if you SCARE ME, pleas tel me its ok```"
+    ],
+    "love": {
+      "happy": [
+        "<:catlove:575816294113476608>"
+      ],
+      "neutral": [
+        "<:cathappy:575567233254948865>"
+      ],
+      "sad": [
+        "<:meowflirty:1073394679539830834>"
+      ]
+    },
+    "meow": {
+      "happy": [
+        "<:meowuwu:575816294280986625>",
+        "<:meowsquee:575816294042042375>",
+        "<:meowsmile:575816294507741184>",
+        "<:meowhello:575816294646022145>",
+        "<:cathappy:575567233254948865>",
+        "<:meowbigsmile:575818640616587278>",
+        "<:meowamused:575818640083910677>",
+        "<:meowmelt:575818640000024597>"
+      ],
+      "neutral": [
+        "<:meowhmph:575816294390038539>",
+        "<:meowflushed:575816294536970262>"
+      ],
+      "sad": [
+        "<:meowsad:575818640285237248>",
+        "<:meownotamused:575818640054550528>",
+        "<:meowpout:575816294809731073>"
+      ]
+    },
+    "moms": [
+      "```MY MOMS R",
+      "Colgate#3522 - Main Codebase",
+      "warms#8080 - Initial Implementation",
+      "Else#3573 - Helping with Initial Implementation",
+      "Cat#5365 - Helping with Initial Implementation```"
+    ],
+    "momsfollowup": [
+      "<:meowuwu:575816294280986625>"
+    ],
+    "pet": {
+      "happy": [
+        "<:pethappy:575816294054756382>"
+      ],
+      "neutral": [
+        "<:meowhmph:575816294390038539>",
+        "<:petsad:575816294251757579>"
+      ],
+      "sad": [
+        "<:cathiss:575816295111720983>"
+      ]
+    },
+    "pspsps": [
+      "<a:ameowpeek:821423317168816159>",
+      "<:meoweyes:821419657386131507>",
+      "<a:ameowlurk:821423040231505980>"
+    ],
+    "shout": [
+      "<:meowyikes:580076064152485912>",
+      "<:meowterrified:580076064051822592>"
+    ],
+    "speak": [
+      "<:meowenjoy:580135721159884813>"
+    ],
+    "sus": [
+      "<:meowsus:821429204125745252>"
+    ],
+    "thankyou": [
+      "thank",
+      "flower"
+    ],
+    "vibe": [
+      "<:meowknife:584213063519961128>",
+      "<:meowyikes:580076064152485912>",
+      "<:meowterrified:580076064051822592>",
+      "<:meowhammer:637324500232437780>"
+    ],
+    "welcome": [
+      "^hello",
+      "^hi",
+      "^henlo",
+      "^heya",
+      "^hoi"
+    ]
+  }
 }
