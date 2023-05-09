@@ -14,6 +14,10 @@ class awaitHandler {
     }
     set(id) {
         this._awaiting.add(id);
+        // safety mechanism, make sure nothing stays in here for over 15 seconds (just in case)
+        setTimeout(() => {
+            this._awaiting.delete(id);
+        }, 15000);
     }
     delete(id) {
         this._awaiting.delete(id);

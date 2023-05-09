@@ -27,6 +27,9 @@ const bork = require('./triggers/bork.js');
 const catface = require('./triggers/catface.js');
 const kawaii = require('./triggers/kawaii.js');
 const meowTrigger = require('./triggers/meow.js');
+const owo = require('./triggers/owo.js');
+const pspspsTrigger = require('./triggers/pspsps.js');
+const shouting = require('./triggers/shouting.js');
 const susTrigger = require('./triggers/sus.js');
 
-module.exports.triggers = [blobcat, bork, catface, kawaii, meowTrigger, susTrigger];
+module.exports.triggers = [blobcat, bork, catface, kawaii, meowTrigger, owo, pspspsTrigger, shouting, susTrigger];
