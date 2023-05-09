@@ -17,10 +17,16 @@ module.exports.commands = [bazinga, feed, hello, hug, hunger, love, meow, mood, 
 
 // admin
 const toggle = require('./admin/toggle.js');
+const stringTest = require('./admin/stringTest.js');
 
-module.exports.admin = [toggle];
+module.exports.admin = [toggle, stringTest];
 
 // triggers
+const blobcat = require('./triggers/blobcat.js');
+const bork = require('./triggers/bork.js');
+const catface = require('./triggers/catface.js');
+const kawaii = require('./triggers/kawaii.js');
+const meowTrigger = require('./triggers/meow.js');
 const susTrigger = require('./triggers/sus.js');
 
-module.exports.triggers = [susTrigger];
+module.exports.triggers = [blobcat, bork, catface, kawaii, meowTrigger, susTrigger];

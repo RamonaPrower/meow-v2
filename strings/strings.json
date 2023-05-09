@@ -25,10 +25,19 @@
       "<:meownervous:584165009198940198>"
     ],
     "blobcat": [
-      "<:catblobheart:405242612681801739>"
+      "<:blobcatheart:1105206902079619142>",
+      "<:blobcatheart:1105206902079619142>",
+      "<:blobcatheart:1105206902079619142>",
+      "<:blobcatheart:1105206902079619142>",
+      "<:blobcatheart:1105206902079619142>",
+      "<:blobcatheart:1105206902079619142>",
+      "<:blobcatheart:1105206902079619142>",
+      "<:blobcatheart:1105206902079619142>",
+      "<:blobcathearttrans:1105206900921991281>",
+      "<:blobcatheart:1105206902079619142>"
     ],
     "bork": [
-      "<a:shifty:403042127522562060>"
+      "<:blobcatglaresad:1105430876667514891>"
     ],
     "calmemojis": [
       "<:pethappy:575816294054756382>",
@@ -52,8 +61,8 @@
       "mrrrr",
       "miau!",
       "nyan~",
-      "mlem <:blobcatmlem:405521865268789251>",
-      "purrr~ <:blobcathappy:406260483960733696>"
+      "mlem <:blobcatmlem:1105210165759852706>",
+      "purrr~ <:cathappy:575567233254948865>"
     ],
     "die": [
       "<:meowknife:584213063519961128>"
@@ -89,6 +98,9 @@
       "pleas tel me u lov me lots",
       "if you SCARE ME, pleas tel me its ok```"
     ],
+    "kawaii": [
+      "<:animemeow:585568514320891925>"
+    ],
     "love": {
       "happy": [
         "<:catlove:575816294113476608>"
@@ -97,7 +109,7 @@
         "<:cathappy:575567233254948865>"
       ],
       "sad": [
-        "<:meowflirty:1073394679539830834>"
+        "<:blobcatglaresad:1105430876667514891>"
       ]
     },
     "meow": {
@@ -121,6 +133,9 @@
         "<:meowpout:575816294809731073>"
       ]
     },
+    "meowdy": [
+      "<:blobcatcowboy:1105432418221043762>"
+    ],
     "moms": [
       "```MY MOMS R",
       "Colgate#3522 - Main Codebase",
@@ -162,7 +177,7 @@
       "thank",
       "flower"
     ],
-    "vibe": [
+    "vibecheck": [
       "<:meowknife:584213063519961128>",
       "<:meowyikes:580076064152485912>",
       "<:meowterrified:580076064051822592>",

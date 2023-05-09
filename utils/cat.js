@@ -141,38 +141,10 @@ class Cat {
         }
         // if moodbased is false, then we're doing a specific action
         else {
-            switch (action) {
-                case 'bazinga':
-                    foundAction = this.strings.bazinga;
-                    break;
-                case 'blobcat':
-                    foundAction = this.strings.blobcat;
-                    break;
-                case 'bork':
-                    foundAction = this.strings.bork;
-                    break;
-                case 'hug':
-                    foundAction = this.strings.hug;
-                    break;
-                case 'hunger':
-                    foundAction = this.strings.hunger;
-                    break;
-                case 'pspsps':
-                    foundAction = this.strings.pspsps;
-                    break;
-                case 'speak':
-                    foundAction = this.strings.speak;
-                    break;
-                case 'sus':
-                    foundAction = this.strings.sus;
-                    break;
-                case 'vibecheck':
-                    foundAction = this.strings.vibe;
-                    break;
-                default:
-                    foundAction = this.strings.meow;
-                    console.log('defaulted, action was ' + action);
-                    break;
+            foundAction = this.strings[action];
+            // make sure we're not null
+            if (!foundAction) {
+                foundAction = this.strings.meow;
             }
             if (action === 'hunger') {
                 if (this.hunger <= 4) {

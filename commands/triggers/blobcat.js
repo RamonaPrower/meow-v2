@@ -1,6 +1,6 @@
 module.exports = {
     async execute(interaction, guildUserCat) {
-        const reply = await guildUserCat.getReaction('catblob');
+        const reply = await guildUserCat.getReaction('blobcat');
         await interaction.reply(reply);
     },
 };

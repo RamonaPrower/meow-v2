@@ -11,6 +11,7 @@ const commandList = require('./commands/command');
 const { GuildSettings } = require('./utils/guild');
 const { Cat } = require('./utils/cat');
 const guildSettings = new GuildSettings;
+const awaitHandler = require('./utils/await');
 
 // suspect i'm going to have to come back to this and get a bit lost with my pattern so i'm going to explain it here
 // the commandList is a file that exports a list of all the commands
@@ -37,7 +38,10 @@ client.slashAdmin = new Collection();
 const commandsAdmin = commandList.admin;
 for (const file of commandsAdmin) {
 	client.messageAdmin.set(file.settings.tag, file);
-	client.slashAdmin.set(file.data.name, file);
+	if (file.settings.blockSlash !== true) {
+		client.slashAdmin.set(file.data.name, file);
+	}
+
 }
 
 client.messageTriggers = new Collection();
@@ -64,6 +68,8 @@ client.on(Events.MessageCreate, async message => {
 	if (message.author.bot || message.mentions.everyone === true) return;
 	// checking for server outages
 	if (message.guild.available === false) return;
+	// checking for if user is in await list
+	if (awaitHandler.get(message.author.id) === true) return;
 	// is meow mentioned
 	const mentioned = message.mentions.has(client.user);
 	// get the settings for the guild
