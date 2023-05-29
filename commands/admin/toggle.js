@@ -7,7 +7,7 @@ module.exports = {
         .addStringOption(option =>
             option.setName('skin')
                 .setDescription('The skin to use')
-                .addChoices({ name: 'Default', value: 'default' }, { name: 'Blahaj', value: 'blahaj' }))
+                .addChoices({ name: 'Default', value: 'default' }, { name: 'Fox', value: 'foxxo' }))
         .addBooleanOption(option =>
             option.setName('shouting')
                 .setDescription('Whether or not to enable shouting')),

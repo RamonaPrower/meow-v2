@@ -142,9 +142,10 @@ class Cat {
         // if moodbased is false, then we're doing a specific action
         else {
             foundAction = this.strings[action];
-            // make sure we're not null
-            if (!foundAction) {
+            // make sure we're not null, or not an array
+            if (!foundAction || !Array.isArray(foundAction)) {
                 foundAction = this.strings.meow;
+                console.log('defaulted, action was ' + action);
             }
             if (action === 'hunger') {
                 if (this.hunger <= 4) {

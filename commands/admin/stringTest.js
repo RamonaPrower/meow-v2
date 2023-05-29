@@ -1,9 +1,12 @@
 const stringBuilder = require('../../utils/stringBuilder.js');
+const { Cat } = require('../../utils/cat.js');
 
 module.exports = {
-    async execute(interaction, guildUserCat) {
+    async execute(interaction, guildSettings) {
+        // generate a cat Class
+        const cat = await Cat.create(interaction.guild.id, interaction.author.id);
         // find all strings in the json object that buildStrings outputs, there can be objects within objects
-        const strings = stringBuilder.buildStrings(guildUserCat);
+        const strings = stringBuilder.buildStrings(cat.skin);
         // expand all strings into an array
         let stringArray = [];
         Object.keys(strings).forEach((key) => {

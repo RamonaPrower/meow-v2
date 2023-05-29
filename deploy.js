@@ -7,12 +7,14 @@ const commandList = require('./commands/command');
 const commandsComms = commandList.commands;
 for (const file of commandsComms) {
 	if (file.settings.blockSlash !== true) {
-	commands.push(file.data.toJSON());
+		commands.push(file.data.toJSON());
 	}
 }
 const commandAdmin = commandList.admin;
 for (const file of commandAdmin) {
-	commands.push(file.data.toJSON());
+	if (file.settings.blockSlash !== true) {
+		commands.push(file.data.toJSON());
+	}
 }
 
 
@@ -47,7 +49,7 @@ const rest = new REST({ version: '10' }).setToken(config.discord);
 
 
 	}
- catch (error) {
+	catch (error) {
 		// And of course, make sure you catch and log any errors!
 		console.error(error);
 	}
