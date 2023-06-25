@@ -20,7 +20,7 @@ module.exports.commands = [bazinga, feed, hello, hug, hunger, love, meow, mood, 
 const toggle = require('./admin/toggle.js');
 const stringTest = require('./admin/stringTest.js');
 
-module.exports.admin = [toggle, stringTest];
+module.exports.admin = [toggle];
 
 // triggers
 const binkyfish = require('./triggers/binkyfish.js');
