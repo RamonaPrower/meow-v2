@@ -73,12 +73,10 @@ client.on(Events.MessageCreate, async message => {
 	// is meow mentioned
 	const mentioned = message.mentions.has(client.user);
 	// get the settings for the guild
-	const thisGuildSettings = await guildSettings.getSettings(message.guild.id);
-	// make a guildUserCat (just for testing, this will be ordinarily called from the command to save db calls when not needed)
 	// admin
 	if (mentioned === true && (message.author.id === message.guild.ownerId || message.member.permissions.has('MANAGE_CHANNELS'))) {
 		// message admin commands
-		for (const [key, value] of client.messageAdmin) {
+		for (const [, value] of client.messageAdmin) {
 			if (value.settings.regexp.test(message.content)) {
 				console.log('admin command called');
 				value.execute(message, guildSettings);
@@ -88,9 +86,9 @@ client.on(Events.MessageCreate, async message => {
 	}
 	// commands
 	if (mentioned === true) {
-		for (const [key, value] of client.messageCommands) {
+		for (const [, value] of client.messageCommands) {
 			if (value.settings.regexp.test(message.content)) {
-				// saves on cat calls! (https://www.youtube.com/watch?v=pSg_6T8HrRg)
+				// saves on cat calls! (https://www.youtube.com/watch?v=YNkzmP4ypOk)
 				console.log('command called');
 				const guildUserCat = await Cat.create(message.guild.id, message.author.id);
 				value.execute(message, guildUserCat);
@@ -100,7 +98,7 @@ client.on(Events.MessageCreate, async message => {
 	}
 	// triggers
 	const dice = Math.floor(Math.random() * 100) + 1;
-	for (const [key, value] of client.messageTriggers) {
+	for (const [, value] of client.messageTriggers) {
 		// if dice is less than or equal to the chance of the trigger, then run it
 		if (dice <= value.settings.chance || config.dev === true) {
 			if (value.settings.regexp.test(message.content)) {
@@ -118,7 +116,6 @@ client.on(Events.MessageCreate, async message => {
 // this is for admin slash commands
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
-	const thisGuildSettings = await guildSettings.getSettings(interaction.guildId);
 	const guildUserCat = await Cat.create(interaction.guildId, interaction.user.id);
 	// check for admin commands
 	if (interaction.user.id === interaction.guild.ownerId || interaction.member.permissions.has('MANAGE_CHANNELS')) {
