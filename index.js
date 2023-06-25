@@ -1,5 +1,5 @@
 // setting up the discord bot
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, PermissionsBitField } = require('discord.js');
 const config = require('./config.json');
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds,
@@ -74,7 +74,7 @@ client.on(Events.MessageCreate, async message => {
 	const mentioned = message.mentions.has(client.user);
 	// get the settings for the guild
 	// admin
-	if (mentioned === true && (message.author.id === message.guild.ownerId || message.member.permissions.has('MANAGE_CHANNELS'))) {
+	if (mentioned === true && (message.author.id === message.guild.ownerId || message.member.permissions.has(PermissionsBitField.Flags.ManageChannels))) {
 		// message admin commands
 		for (const [, value] of client.messageAdmin) {
 			if (value.settings.regexp.test(message.content)) {
@@ -118,7 +118,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 	const guildUserCat = await Cat.create(interaction.guildId, interaction.user.id);
 	// check for admin commands
-	if (interaction.user.id === interaction.guild.ownerId || interaction.member.permissions.has('MANAGE_CHANNELS')) {
+	if (interaction.user.id === interaction.guild.ownerId || interaction.member.permissions.has(PermissionsBitField.Flags.ManageChannels)) {
 		const adminCommand = interaction.client.slashAdmin.get(interaction.commandName);
 		if (adminCommand) {
 			try {
