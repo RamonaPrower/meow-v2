@@ -1,5 +1,6 @@
 // commands
 const bazinga = require('./commands/bazinga.js');
+const defaultCom = require('./commands/default.js');
 const feed = require('./commands/feed.js');
 const hello = require('./commands/hello.js');
 const hug = require('./commands/hug.js');
@@ -15,7 +16,7 @@ const speak = require('./commands/speak.js');
 const sus = require('./commands/sus.js');
 const vibe = require('./commands/vibe.js');
 
-module.exports.commands = [bazinga, feed, hello, hug, hunger, info, love, meow, mood, moms, pet, pspsps, speak, sus, vibe];
+module.exports.commands = [bazinga, defaultCom, feed, hello, hug, hunger, info, love, meow, mood, moms, pet, pspsps, speak, sus, vibe];
 
 // admin
 const toggle = require('./admin/toggle.js');

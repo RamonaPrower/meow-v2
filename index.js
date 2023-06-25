@@ -95,6 +95,9 @@ client.on(Events.MessageCreate, async message => {
 				return;
 			}
 		}
+		// if there's nothing that matches, run the default command
+		const guildUserCat = await Cat.create(message.guild.id, message.author.id);
+		client.messageCommands.get('default').execute(message, guildUserCat);
 	}
 	// triggers
 	const dice = Math.floor(Math.random() * 100) + 1;
