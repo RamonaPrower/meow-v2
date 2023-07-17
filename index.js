@@ -89,12 +89,13 @@ client.on(Events.MessageCreate, async message => {
 		for (const [, value] of client.messageCommands) {
 			if (value.settings.regexp.test(message.content)) {
 				// saves on cat calls! (https://www.youtube.com/watch?v=YNkzmP4ypOk)
-				console.log('command called');
+				console.log(`${value.info.name} called by ${message.author.username}`);
 				const guildUserCat = await Cat.create(message.guild.id, message.author.id);
 				value.execute(message, guildUserCat);
 				return;
 			}
 		}
+		console.log(`default command called by ${message.author.username}`);
 		// if there's nothing that matches, run the default command
 		const guildUserCat = await Cat.create(message.guild.id, message.author.id);
 		client.messageCommands.get('default').execute(message, guildUserCat);
