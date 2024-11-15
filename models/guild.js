@@ -66,9 +66,9 @@ guildSchema.pre('findOne', async function() {
     const timeNow = new Date();
     const diff = moment().diff(foundGuild.lastUpdate, 'hours');
     if (diff === 0) return;
-    if (diff > 100) {
-        // if it's been more than 100 hours, give the user a grace period
-        foundGuild.interactionCount = 4;
+    if (diff > 96) {
+        // if it's been more than 4 days, give the user a grace period
+        foundGuild.interactionCount = 3;
     }
     let newHunger = foundGuild.hunger - diff;
     if (newHunger < 0) newHunger = 0;
