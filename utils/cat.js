@@ -54,6 +54,7 @@ class Cat {
         const hundredSidedDice = Math.floor(Math.random() * 100) + 1;
         // calculate "proper" mood
         let overallMood = this.mood + (Math.round(this.user.happiness / 2));
+        await this.guild.save();
         let foundString;
         let foundAction;
         // case break to determine what to do if moodBased is true
@@ -93,7 +94,8 @@ class Cat {
                 foundString = this.strings.asleep[Math.floor(Math.random() * this.strings.asleep.length)];
                 return foundString;
             }
-            else if (this.hunger <= 4) {
+            // grace period for the user to interact with the cat before it nags about being hungry
+            else if (this.hunger <= 4 && this.guild.interactionCount == 0) {
                 foundString = this.strings.hunger.yes[Math.floor(Math.random() * this.strings.hunger.yes.length)];
                 return foundString;
             }
@@ -135,6 +137,11 @@ class Cat {
             // if the cat is happy, then petting it will make it like the user more
             if (action === 'pet' && overallMood >= 6) {
                 await this.user.positive();
+            }
+            // reduce the interaction count, if it's not already 0
+            if (this.guild.interactionCount > 0) {
+                this.guild.interactionCount--;
+                await this.guild.save();
             }
             return foundString[Math.floor(Math.random() * foundString.length)];
 
