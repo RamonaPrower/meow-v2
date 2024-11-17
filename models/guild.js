@@ -45,6 +45,11 @@ const guildSchema = new mongoose.Schema({
         required: true,
         default: 'default',
     },
+    interactionCount: {
+        type: Number,
+        required: true,
+        default: 0,
+    }
 });
 guildSchema.statics.checkGuild = async function(snowflake) {
     return this.findOne({
@@ -61,6 +66,10 @@ guildSchema.pre('findOne', async function() {
     const timeNow = new Date();
     const diff = moment().diff(foundGuild.lastUpdate, 'hours');
     if (diff === 0) return;
+    if (diff > 96) {
+        // if it's been more than 4 days, give the user a grace period
+        foundGuild.interactionCount = 3;
+    }
     let newHunger = foundGuild.hunger - diff;
     if (newHunger < 0) newHunger = 0;
     foundGuild.hunger = newHunger;
