@@ -28,15 +28,15 @@ module.exports = {
                 await guildSettings.setSkin(guildId, skin);
                 stringToSend += `Skin set to ${skin}\n`;
             }
-            if (shouting) {
+            if (shouting !== null) {
                 await guildSettings.toggleShouting(guildId, shouting);
                 stringToSend += `Shouting set to ${shouting}\n`;
             }
-            if (hunger) {
+            if (hunger !== null) {
                 await guildSettings.toggleHunger(guildId, hunger);
                 stringToSend += `Hunger set to ${hunger}\n`;
             }
-            if (!skin && !shouting && !hunger) {
+            if (!skin && shouting === null && hunger === null) {
                 stringToSend += `Skin: ${thisGuildSettings.skin}\nShouting: ${thisGuildSettings.shouting}\nHunger: ${thisGuildSettings.hunger}`;
             }
             await interaction.reply(stringToSend);
@@ -46,8 +46,8 @@ module.exports = {
             const thisGuildSettings = await guildSettings.getSettings(guildId);
             const skin = interaction.content.match(/(?<=skin )\w+/mi);
             // shouting is a boolean so we can just check if it's in the message
-            const shouting = interaction.content.contains('shouting');
-            const hunger = interaction.content.contains('hunger');
+            const shouting = interaction.content.includes('shouting');
+            const hunger = interaction.content.includes('hunger');
             if (skin) {
                 await guildSettings.setSkin(guildId, skin[0]);
                 await interaction.reply(`Skin set to ${skin[0]}`);
