@@ -40,6 +40,11 @@ const guildSchema = new mongoose.Schema({
         required: true,
         default: true,
     },
+    enableHunger: {
+        type: Boolean,
+        required: true,
+        default: true,
+    },
     skin: {
         type: String,
         required: true,

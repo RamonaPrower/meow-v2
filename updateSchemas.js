@@ -12,6 +12,7 @@ async function updateSchemas() {
         const settings = await guildSettings.getSettings(guild.snowflake);
         guild.enableSim = settings.sim;
         guild.enableShouting = settings.shouting;
+        guild.enableHunger = settings.hunger;
         guild.skin = settings.skin;
         await guild.save();
     }
