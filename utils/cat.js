@@ -14,7 +14,8 @@ class Cat {
         // mood is controlled by the guild model, updates every time that a search is called for the guild
         this.mood = guildSearch.mood;
         this.guild = guildSearch;
-        this.hunger = guildSearch.hunger;
+        // if hunger is disabled, always return 10 (max hunger)
+        this.hunger = guildSearch.enableHunger ? guildSearch.hunger : 10;
         this.user = userSearch;
         this.skin = skin;
         this.strings = stringBuilder.buildStrings(skin);
@@ -95,7 +96,7 @@ class Cat {
                 return foundString;
             }
             // grace period for the user to interact with the cat before it nags about being hungry
-            else if (this.hunger <= 4 && this.guild.interactionCount == 0) {
+            else if (this.guild.enableHunger && this.hunger <= 4 && this.guild.interactionCount == 0) {
                 foundString = this.strings.hunger.yes[Math.floor(Math.random() * this.strings.hunger.yes.length)];
                 return foundString;
             }
@@ -155,7 +156,7 @@ class Cat {
                 console.log('defaulted, action was ' + action);
             }
             if (action === 'hunger') {
-                if (this.hunger <= 4) {
+                if (this.guild.enableHunger && this.hunger <= 4) {
                     foundString = foundAction.yes[Math.floor(Math.random() * foundAction.yes.length)];
                 }
                 else {
@@ -170,6 +171,11 @@ class Cat {
 
     }
     async feed() {
+        // if hunger is disabled, always act as if the cat is not hungry
+        if (!this.guild.enableHunger) {
+            return this.strings.hunger.no[Math.floor(Math.random() * this.strings.hunger.no.length)];
+        }
+        
         // if hunger is below 4, then meow is hungy
         const hungy = this.hunger <= 4;
 

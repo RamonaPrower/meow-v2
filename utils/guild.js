@@ -32,6 +32,7 @@ class GuildSettings {
             }
             this.guilds.set(guildId, {
                 shouting: search.enableShouting,
+                hunger: search.enableHunger,
                 skin: search.skin,
             });
             return this.guilds.get(guildId);
@@ -55,6 +56,7 @@ class GuildSettings {
         await search.save();
         this.guilds.set(guildId, {
             shouting: search.enableShouting,
+            hunger: search.enableHunger,
             skin: search.skin,
         });
         return this.guilds.get(guildId);
@@ -80,6 +82,33 @@ class GuildSettings {
         await search.save();
         this.guilds.set(guildId, {
             shouting: search.enableShouting,
+            hunger: search.enableHunger,
+            skin: search.skin,
+        });
+        return this.guilds.get(guildId);
+    }
+    /**
+     * Toggles the hunger system on a server
+     * @param {Snowflake} guildId The guild ID
+     * @returns {Object} The settings of the guild
+     */
+    async toggleHunger(guildId, force) {
+        const search = await Guild.checkGuild(guildId);
+        if (!force) {
+            if (search.enableHunger === true) {
+                search.enableHunger = false;
+            }
+            else {
+                search.enableHunger = true;
+            }
+        }
+        else {
+            search.enableHunger = force;
+        }
+        await search.save();
+        this.guilds.set(guildId, {
+            shouting: search.enableShouting,
+            hunger: search.enableHunger,
             skin: search.skin,
         });
         return this.guilds.get(guildId);
