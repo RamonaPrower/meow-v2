@@ -14,7 +14,8 @@ module.exports = {
 	async execute(interaction, guildSettings) {
         // check if this is an interaction, or a message command
         // as gross as this is, it's this or create two separate commands for the same thing
-        if (interaction.isCommand()) {
+        const isCommand = interaction.isCommand();
+        if (isCommand) {
             const guildId = interaction.guildId;
             const skin = interaction.options.getString('skin');
             const shouting = interaction.options.getBoolean('shouting');
@@ -24,11 +25,11 @@ module.exports = {
                 await guildSettings.setSkin(guildId, skin);
                 stringToSend += `Skin set to ${skin}\n`;
             }
-            if (shouting) {
+            if (shouting !== null) {
                 await guildSettings.toggleShouting(guildId, shouting);
                 stringToSend += `Shouting set to ${shouting}\n`;
             }
-            if (!skin && !shouting) {
+            if (!skin && shouting === null) {
                 stringToSend += `Skin: ${thisGuildSettings.skin}\nShouting: ${thisGuildSettings.shouting}`;
             }
             await interaction.reply(stringToSend);
@@ -43,11 +44,11 @@ module.exports = {
                 await guildSettings.setSkin(guildId, skin[0]);
                 await interaction.reply(`Skin set to ${skin[0]}`);
             }
-            if (shouting) {
+            if (shouting !== null) {
                 const guild = await guildSettings.toggleShouting(guildId);
                 await interaction.reply(`Shouting set to ${guild.shouting}`);
             }
-            if (!skin && !shouting) {
+            if (!skin && shouting === null) {
                 await interaction.reply(`Skin: ${thisGuildSettings.skin}\nShouting: ${thisGuildSettings.shouting}`);
             }
         }

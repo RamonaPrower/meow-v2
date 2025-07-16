@@ -106,6 +106,13 @@ client.on(Events.MessageCreate, async message => {
 		// if dice is less than or equal to the chance of the trigger, then run it
 		if (dice <= value.settings.chance || config.dev === true) {
 			if (value.settings.regexp.test(message.content)) {
+				// Check if shouting is enabled for this guild (only for shout trigger)
+				if (value.settings.tag === 'shout') {
+					const guildSettingsData = await guildSettings.getSettings(message.guild.id);
+					if (!guildSettingsData.shouting) {
+						continue;
+					}
+				}
 				console.log(`Triggered ${value.info.name} with ${dice}`);
 				const guildUserCat = await Cat.create(message.guild.id, message.author.id);
 				value.execute(message, guildUserCat);
